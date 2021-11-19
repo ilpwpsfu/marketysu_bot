@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const TelegramBot = require('node-telegram-bot-api')
-// const AmoCRM = require('amocrm-js')
 const axios = require('axios').default
 const messagePack = require('./modules/messagePack')
 const keyboardPack = require('./modules/keyboardPack')
@@ -15,20 +14,6 @@ const amoData = {
     client_secret: process.env.AMO_SECRET,
     redirect_uri: process.env.AMO_REDIRECT
 }
-// const crm = new AmoCRM({
-//     // логин пользователя в портале, где адрес портала domain.amocrm.ru
-//     domain: '2delo.amocrm.ru', // может быть указан полный домен вида domain.amocrm.ru, domain.amocrm.com
-//     /* 
-//       Информация об интеграции (подробности подключения 
-//       описаны на https://www.amocrm.ru/developers/content/oauth/step-by-step)
-//     */
-//     auth: {
-//         client_id: process.env.AMO_ID,
-//         client_secret: process.env.AMO_SECRET,
-//         redirect_uri: process.env.AMO_REDIRECT,
-//         code: process.env.AMO_CODE
-//     }
-// })
 
 let authData
 
@@ -157,7 +142,6 @@ async function auth(refresh) {
 
     const authReq = await axios.post(amo('/oauth2/access_token'), data)
     authData = authReq.data
-    // console.log(authReq)
 
     fs.writeFileSync('./authData.json', JSON.stringify({ ...authData, date: Date.now() }))
 }

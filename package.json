@@ -1,4 +1,5 @@
 {
+  "url": "https://github.com/ilpwpsfu/marketysu_bot",
   "dependencies": {
     "amocrm-js": "^2.0.9",
     "axios": "^0.24.0",
